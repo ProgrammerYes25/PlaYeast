@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PlaYeast-Abb</title>
+</head>
+<body>
+    <h2 th:text="'PlaYeast'"></h2>
+    <hr>
+    <h4 th:text="'음악검색하기'"></h4>
+    <form method="post" action="search">
+        <input name="name">
+        <button type="submit">검색</button>
+    </form>
+    <button type="submit">나가기</button>
+    <button type="submit">생성</button>
+</body>
+</html>

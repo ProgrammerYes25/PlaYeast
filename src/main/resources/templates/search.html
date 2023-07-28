@@ -2,17 +2,21 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>PlaYeast</title>
+    <title>PlaYeast-Search</title>
 </head>
 <body>
-    <h1 th:text="'PlaYeast'"></h1>
-    <form method="post" action="search">
-        <input name="name">
-        <button type="submit">검색</button>
-    </form>
     <button><a th:href="@{/search}">음악보러가기</a></button>
     <button><a th:href="@{/add}">음악추가가기</a></button>
     <button><a th:href="@{/}">음악들으러가기</a></button>
     <button><a th:href="@{/makeList}">리스트만들러가기</a></button>
+    <h2 th:text="'PlaYeast'"></h2>
+    <hr>
+    <h4 th:text="'음악검색하기'"></h4>
+    <form method="post" action="search">
+        <input name="name">
+        <button type="submit">검색</button>
+    </form>
+    <table>
+    </table>
 </body>
 </html>
