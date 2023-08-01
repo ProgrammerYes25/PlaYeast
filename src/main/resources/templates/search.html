@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>PlaYeast-Search</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search.css?after}"></link>
 </head>
 <body>
-    <button><a th:href="@{/search}">음악보러가기</a></button>
-    <button><a th:href="@{/add}">음악추가가기</a></button>
-    <button><a th:href="@{/}">음악들으러가기</a></button>
-    <button><a th:href="@{/makeList}">리스트만들러가기</a></button>
-    <h2 th:text="'PlaYeast'"></h2>
-    <hr>
-    <h4 th:text="'음악검색하기'"></h4>
-    <form method="post" action="search">
-        <input name="name">
-        <button type="submit">검색</button>
-    </form>
-    <table>
-    </table>
+    <div class="centerDiv">
+        <h1 th:text="'PlaYeast'"></h1>
+            <hr>
+        <h4 th:text="'음악검색하기'"></h4>
+        <div class="btnDiv">
+            <a th:href="@{/search}" class="btn">음악보러가기</a>
+            <a th:href="@{/add}" class="btn">음악추가가기</a>
+            <a th:href="@{/}" class="btn">음악들으러가기</a>
+            <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
+        </div>
+
+        <form method="post" action="search" class="btnDiv">
+            <input name="name" class="sch_in">
+            <button type="submit" class="inbtn">검색</button>
+        </form>
+        <table>
+        </table>
+    </div>
 </body>
 </html>
