@@ -8,9 +8,19 @@
     <h2 th:text="'PlaYeast'"></h2>
     <hr>
     <h4 th:text="'음악추가하기'"></h4>
-    <form method="post" action="search">
-        <input name="name">
-        <button type="submit">검색</button>
+    <form method="post" action="add_done">
+        제 목 <input type="text" name="book_id"><br>
+        앨 범 제 목 <input type="text" name="book_name"><br>
+        트 랙 번 호 <input type="text" name="book_name"><br>
+        아 티 스 트 <input type="text" name="book_name"><br>
+        키워드<br>
+        <input type="radio" name="genre_id" class="radio_btn" value="G001"/>
+        <input type="radio" name="genre_id" class="radio_btn" value="G002"/>
+        <input type="radio" name="genre_id" class="radio_btn" value="G003"/>
+        <input type="radio" name="genre_id" class="radio_btn" value="G004"/>
+        <input type="radio" name="genre_id" class="radio_btn" value="G005"/>
+        <input type="radio" name="mood_id" class="radio_btn"/>
+        <input type="radio" name="weather_id" class="radio_btn"/>
     </form>
     <button type="submit">나가기</button>
     <button type="submit">생성</button>

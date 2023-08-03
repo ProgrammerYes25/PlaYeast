@@ -10,4 +10,7 @@ public class MusicDTO {
     String music_album;
     int music_time;
     int music_track;
+    String genre_id;
+    String mood_id;
+    String weather_id;
 }
