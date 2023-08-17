@@ -8,7 +8,7 @@
     <h2 th:text="'PlaYeast'"></h2>
     <hr>
     <h4 th:text="'음악추가하기'"></h4>
-    <form method="post" action="add_done">
+    <form method="post">
         제 목 <input type="text" name="book_id"><br>
         앨 범 제 목 <input type="text" name="book_name"><br>
         트 랙 번 호 <input type="text" name="book_name"><br>
@@ -33,7 +33,7 @@
         <input type="radio" name="weather_id" class="radio_btn" value="W006"/>여름
         <input type="radio" name="weather_id" class="radio_btn" value="W007"/>가을
         <input type="radio" name="weather_id" class="radio_btn" value="W008"/>겨울
-        <br>
+
         분 위 기&nbsp;
         <input type="radio" name="mood_id" class="radio_btn" value="M001"/>신나는
         <input type="radio" name="mood_id" class="radio_btn" value="M002"/>힐링
@@ -44,8 +44,10 @@
         <input type="radio" name="mood_id" class="radio_btn" value="M007"/>몽환적인
         <input type="radio" name="mood_id" class="radio_btn" value="M008"/>화려한
         <input type="radio" name="mood_id" class="radio_btn" value="M009"/>아련한
+        <br>
+        <button type="submit" formaction="/add_done">생성</button>
+        <button type="submit"  formaction="/">나가기</button>
     </form>
-    <button type="submit">나가기</button>
-    <button type="submit">생성</button>
+
 </body>
 </html>
