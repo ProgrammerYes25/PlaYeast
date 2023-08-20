@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class PalYeastController {
     private PlaYeastService plaYeastService;
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
     @PostMapping("/search")
     public String postSearch(){return "search";}
     @GetMapping("/search")
@@ -21,8 +25,9 @@ public class PalYeastController {
     }
     @PostMapping("/add_done")
     public String PostAdd(MusicDTO dto){
+        System.out.println(dto);
         plaYeastService.muiscInsert(dto);
-        return "/";
+        return "index";
     }
 
     @GetMapping("/makeList")
