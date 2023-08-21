@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlaYeastServiceImpl implements PlaYeastService{
     @Autowired
-    public PlaYeastMapper plaYeastMapper;
+    private PlaYeastMapper plaYeastMapper;
     @Override
     public void muiscInsert(MusicDTO dto) {
         plaYeastMapper.muiscInsert(dto);
