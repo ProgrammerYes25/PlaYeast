@@ -21,7 +21,28 @@
             <input name="name" class="sch_in">
             <button type="submit" class="inbtn">검색</button>
         </form>
-        <table>
+        <table border>
+            <tr>
+                <td>트랙번호</td>
+                <td>제목</td>
+                <td>아티스트</td>
+                <td>앨범</td>
+            </tr>
+            <tr th:each="music:${list}">
+                <td>
+                    <span th:text="${music.music_track}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_artist}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_album}"/>
+                </td>
+
+            </tr>
         </table>
     </div>
 </body>

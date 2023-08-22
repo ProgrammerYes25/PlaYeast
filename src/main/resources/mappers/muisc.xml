@@ -3,9 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.hs.study.PlaYeast.mappers.myUserMapper">
-    <insert id="insert" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
-        INSERT INTO music_table( music_name, music_artist, music_album, music_time, music_track, genre_id, mood_id, weather_id)
-        values( #{music_name}, #{music_artist}, #{music_album}, #{music_time}, #{music_track}, #{genre_id}, #{mood_id}, #{weather_id})
+<mapper namespace="kr.hs.study.PlaYeast.Mappers.PlaYeastMapper">
+    <insert id="muiscInsert" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+        INSERT INTO music_table(music_id, music_name, music_artist, music_album, music_time, music_track, genre_id, mood_id, weather_id)
+        VALUES(NULL, #{music_name}, #{music_artist}, #{music_album}, #{music_time}, #{music_track}, #{genre_id}, #{mood_id}, #{weather_id})
     </insert>
+    <select id="allSelect" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+        SELECT * FROM music_table ORDER BY music_artist
+    </select>
 </mapper>

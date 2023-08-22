@@ -5,12 +5,20 @@ import kr.hs.study.PlaYeast.Mappers.PlaYeastMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlaYeastServiceImpl implements PlaYeastService{
     @Autowired
     private PlaYeastMapper plaYeastMapper;
     @Override
     public void muiscInsert(MusicDTO dto) {
+        System.out.println(dto);
         plaYeastMapper.muiscInsert(dto);
+    }
+
+    @Override
+    public List<MusicDTO> allSelect() {
+        return plaYeastMapper.allSelect();
     }
 }
