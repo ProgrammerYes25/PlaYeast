@@ -1,6 +1,7 @@
 package kr.hs.study.PlaYeast.Service;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import kr.hs.study.PlaYeast.Mappers.PlaYeastMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,10 @@ public class PlaYeastServiceImpl implements PlaYeastService{
     @Override
     public List<MusicDTO> allSelect() {
         return plaYeastMapper.allSelect();
+    }
+
+    @Override
+    public List<MusicDTO> nameSelect(SearchDTO dto) {
+        return plaYeastMapper.nameSelect(dto);
     }
 }
