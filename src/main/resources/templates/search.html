@@ -23,12 +23,18 @@
         </form>
         <table border>
             <tr>
+                <td>조회 내용</td>
+            </tr>
+            <tr>
                 <td>트랙번호</td>
                 <td>제목</td>
                 <td>아티스트</td>
                 <td>앨범</td>
+                <td>장르</td>
+                <td>분위기</td>
+                <td>날씨</td>
             </tr>
-            <tr th:each="music:${list}">
+            <tr th:each="music:${muiscList}">
                 <td>
                     <span th:text="${music.music_track}"/>
                 </td>
@@ -41,7 +47,15 @@
                 <td>
                     <span th:text="${music.music_album}"/>
                 </td>
-
+                <td>
+                    <span th:text="${music.genre_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.mood_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.weather_name}"/>
+                </td>
             </tr>
         </table>
     </div>

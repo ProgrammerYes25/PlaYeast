@@ -13,4 +13,7 @@ public class MusicDTO {
     String genre_id;
     String mood_id;
     String weather_id;
+    String genre_name;
+    String mood_name;
+    String weather_name;
 }

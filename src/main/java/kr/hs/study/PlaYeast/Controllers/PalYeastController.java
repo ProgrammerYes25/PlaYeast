@@ -1,6 +1,8 @@
 package kr.hs.study.PlaYeast.Controllers;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.PlayListDTO;
+import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import kr.hs.study.PlaYeast.Service.PlaYeastService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +26,19 @@ public class PalYeastController {
     @GetMapping("/search")
     public String getSearch(Model model){
         List<MusicDTO> list = plaYeastService.allSelect();
-        model.addAttribute("list", list);
+        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
+        System.out.println(rollupDTOList);
+        model.addAttribute("muiscList", list);
         return "search";
     }
 
     @PostMapping("/search")
     public String postSearch(SearchDTO dto, Model model){
-        List<MusicDTO> list = plaYeastService.nameSelect(dto);
-        model.addAttribute("list", list);
+        List<MusicDTO> muiscList = plaYeastService.nameSelect(dto);
+        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
+        System.out.println(rollupDTOList);
+        model.addAttribute("muiscList", muiscList);
+
         return "search";
     }
 

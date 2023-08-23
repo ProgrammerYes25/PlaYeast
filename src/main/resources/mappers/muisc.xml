@@ -12,11 +12,22 @@
         SELECT * FROM music_table ORDER BY music_artist
     </select>
     <select id="nameSelect" parameterType="kr.hs.study.PlaYeast.DTO.SearchDTO" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
-        SELECT music_track, music_name, music_artist, music_album
-        FROM (SELECT music_track, music_name, REGEXP_REPLACE(LOWER(music_name), '\s', ''),
-            music_artist, REGEXP_REPLACE(LOWER(music_artist), '\s', ''),
-            music_album, REGEXP_REPLACE(LOWER(music_album), '\s', '')
-            FROM music_table
-            WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
+        SELECT music_track, music_name, music_artist, music_album, genre_name, mood_name, weather_name
+        FROM (SELECT  music.music_track,  music.music_name, REGEXP_REPLACE(LOWER( music.music_name), '\s', ''),
+        music.music_artist, REGEXP_REPLACE(LOWER( music.music_artist), '\s', ''),
+        music.music_album, REGEXP_REPLACE(LOWER( music.music_album), '\s', ''), genre.genre_name, mood.mood_name, weather.weather_name
+        FROM music_table  music  NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
+        WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
+    </select>
+
+<!--    <resultMap id="musicResultMap" type="com.example.dto.RollupDTO">-->
+<!--        <id property="musicArtist" column="music_artist" />-->
+<!--        <result property="count" column="count(*)" />-->
+<!--        <result property="sumMusicTime" column="sum(music_time)" />-->
+<!--    </resultMap>-->
+    <select id="rollupSelect" parameterMap="com.example.dto.RollupDTO">
+        SELECT music_artist, count(*) count, sum(music_time) sumMusicTime
+        FROM music_table GROUP BY ROLLUP(music_artist)
+        ORDER BY music_artist
     </select>
 </mapper>
