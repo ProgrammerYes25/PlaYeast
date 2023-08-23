@@ -8,32 +8,43 @@
     <h2 th:text="'PlaYeast'"></h2>
     <hr>
     <h4 th:text="'음악검색하기'"></h4>
-    <form method="post" action="search">
-        <input name="name">
-        <button type="submit">검색</button>
+    <form method="post">
+        앨 범 제 목 <input type="text" name="music_album"><br>
+        아 티 스 트 <input type="text" name="music_artist"><br>
+        키 워 드<br>
+        &nbsp; 장 르&nbsp; &nbsp;
+        <input type="radio" name="genre_id" class="radio_btn" value="G001">댄스
+        <input type="radio" name="genre_id" class="radio_btn" value="G002">발라드
+        <input type="radio" name="genre_id" class="radio_btn" value="G003">힙합
+        <input type="radio" name="genre_id" class="radio_btn" value="G004">록
+        <input type="radio" name="genre_id" class="radio_btn" value="G005">팝
+        <input type="radio" name="genre_id" class="radio_btn" value="G006">포크/컨트리
+        <input type="radio" name="genre_id" class="radio_btn" value="G007">재즈
+        <input type="radio" name="genre_id" class="radio_btn" value="G008">일렉트릭
+        <br>
+        &nbsp; 날 씨&nbsp; &nbsp;
+        <input type="radio" name="weather_id" class="radio_btn" value="W001">맑은
+        <input type="radio" name="weather_id" class="radio_btn" value="W002">흐린
+        <input type="radio" name="weather_id" class="radio_btn" value="W003"/>비
+        <input type="radio" name="weather_id" class="radio_btn" value="w004"/>눈
+        <input type="radio" name="weather_id" class="radio_btn" value="W005"/>봄
+        <input type="radio" name="weather_id" class="radio_btn" value="W006"/>여름
+        <input type="radio" name="weather_id" class="radio_btn" value="W007"/>가을
+        <input type="radio" name="weather_id" class="radio_btn" value="W008"/>겨울
+        <br>
+        분 위 기&nbsp;
+        <input type="radio" name="mood_id" class="radio_btn" value="M001"/>신나는
+        <input type="radio" name="mood_id" class="radio_btn" value="M002"/>힐링
+        <input type="radio" name="mood_id" class="radio_btn" value="M003"/>청량한
+        <input type="radio" name="mood_id" class="radio_btn" value="M004"/>따뜻한
+        <input type="radio" name="mood_id" class="radio_btn" value="M005"/>위로가되는
+        <input type="radio" name="mood_id" class="radio_btn" value="M006"/>잔잔한
+        <input type="radio" name="mood_id" class="radio_btn" value="M007"/>몽환적인
+        <input type="radio" name="mood_id" class="radio_btn" value="M008"/>화려한
+        <input type="radio" name="mood_id" class="radio_btn" value="M009"/>아련한
+        <br>
+        <button type="submit" formaction="/add_done">플레이리스트 생성</button>
+        <button type="submit"  formaction="/">나가기</button>
     </form>
-    <table border>
-        <tr>
-            <td>트랙번호</td>
-            <td>제목</td>
-            <td>아티스트</td>
-            <td>앨범</td>
-        </tr>
-        <tr th:each="music:${list}">
-            <td>
-                <span th:text="${music.music_track}"/>
-            </td>
-            <td>
-                <span th:text="${music.music_name}"/>
-            </td>
-            <td>
-                <span th:text="${music.music_artist}"/>
-            </td>
-            <td>
-                <span th:text="${music.music_album}"/>
-            </td>
-
-        </tr>
-    </table>
 </body>
 </html>
