@@ -27,9 +27,11 @@ public class PalYeastController {
     @GetMapping("/muiscList")
     public String getSearch(Model model){
         List<MusicDTO> list = plaYeastService.allSelect();
-//        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
-//        System.out.println(rollupDTOList);
+        List<RollupDTO> rollupList = plaYeastService.rollupSelect();
+        System.out.println(rollupList);
+        model.addAttribute("rollupList", rollupList);
         model.addAttribute("muiscList", list);
+        System.out.println(model);
         return "search";
     }
 

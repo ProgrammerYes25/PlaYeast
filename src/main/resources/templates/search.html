@@ -22,6 +22,11 @@
             <button type="submit" class="inbtn">검색</button>
         </form>
         <table border>
+            <tr th:each="rollup:${rollupList}">
+                <td><span th:text="${rollup.musicArtist}"/></td>
+                <td><span th:text="${rollup.count}"/></td>
+                <td><span th:text="${rollup.sumMusicTime}"/></td>
+            </tr>
             <tr>
                 조회 내용
             </tr>

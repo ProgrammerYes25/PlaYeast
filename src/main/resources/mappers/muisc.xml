@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.hs.study.PlaYeast.Mappers.PlaYeastMapper">
+
+    <resultMap id="musicResultMap" type="kr.hs.study.PlaYeast.DTO.RollupDTO">
+        <result property="musicArtist" column="music_artist" />
+        <result property="count" column="count" />
+        <result property="sumMusicTime" column="sumMusicTime" />
+    </resultMap>
+
     <insert id="muiscInsert" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
         INSERT INTO music_table(music_id, music_name, music_artist, music_album, music_time, music_track, genre_id, mood_id, weather_id)
         VALUES(NULL, #{music_name}, #{music_artist}, #{music_album}, #{music_time}, #{music_track}, #{genre_id}, #{mood_id}, #{weather_id})
@@ -32,16 +39,11 @@
         FROM music_table music NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
         WHERE music_id=#{id}
     </select>
-<!--    <resultMap id="musicResultMap" type="com.example.dto.RollupDTO">-->
-<!--        <id property="musicArtist" column="music_artist" />-->
-<!--        <result property="count" column="count(*)" />-->
-<!--        <result property="sumMusicTime" column="sum(music_time)" />-->
-<!--    </resultMap>-->
-<!--    <select id="rollupSelect" parameterMap="com.example.dto.RollupDTO">-->
-<!--        SELECT music_artist, count(*) count, sum(music_time) sumMusicTime-->
-<!--        FROM music_table GROUP BY ROLLUP(music_artist)-->
-<!--        ORDER BY music_artist-->
-<!--    </select>-->
 
 
+    <select id="rollupSelect" resultMap="musicResultMap">
+        SELECT music_artist, count(*) count, sum(music_time) sumMusicTime
+        FROM music_table GROUP BY ROLLUP(music_artist)
+        ORDER BY music_artist
+    </select>
 </mapper>
