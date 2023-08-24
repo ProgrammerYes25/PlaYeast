@@ -1,6 +1,7 @@
 package kr.hs.study.PlaYeast.Controllers;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.PlayListDTO;
 import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import kr.hs.study.PlaYeast.Service.PlaYeastService;
@@ -40,6 +41,38 @@ public class PalYeastController {
     @GetMapping("/search")
     public  String getSearch(){
         return "redirect:/musicList";
+    }
+
+    @GetMapping("/playList")
+    public String getPlayList(Model model){
+        List<MusicDTO> list = plaYeastService.allSelect();
+        List<RollupDTO> rollupList = plaYeastService.rollupSelect();
+        System.out.println(rollupList);
+        for(int i =0; i < rollupList.size(); i++){
+            RollupDTO rdto = rollupList.get(i);
+            int t = rdto.getSumMusicTime();
+            rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
+        }
+        model.addAttribute("rollupList", rollupList);
+        model.addAttribute("musicList", list);
+        System.out.println(model);
+        return "playList";
+    }
+
+    @PostMapping("/playList")
+    public String poatPlayList(PlayListDTO dto, Model model){
+        List<MusicDTO> list = plaYeastService.makeList(dto);
+//        List<RollupDTO> rollupList = plaYeastService.rollupSelect();
+//        System.out.println(rollupList);
+//        for(int i =0; i < rollupList.size(); i++){
+//            RollupDTO rdto = rollupList.get(i);
+//            int t = rdto.getSumMusicTime();
+//            rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
+//        }
+//        model.addAttribute("rollupList", rollupList);
+        model.addAttribute("musicList", list);
+        System.out.println(model);
+        return "playList";
     }
 
     @PostMapping("/search")

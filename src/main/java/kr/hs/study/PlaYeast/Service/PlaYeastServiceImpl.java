@@ -1,6 +1,7 @@
 package kr.hs.study.PlaYeast.Service;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.PlayListDTO;
 import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import kr.hs.study.PlaYeast.Mappers.PlaYeastMapper;
@@ -52,5 +53,10 @@ public class PlaYeastServiceImpl implements PlaYeastService{
 
     public MusicDTO musicGet(int id){
         return plaYeastMapper.musicGet(id);
+    }
+
+    @Override
+    public List<MusicDTO> makeList(PlayListDTO dto) {
+        return plaYeastMapper.makeList(dto);
     }
 }

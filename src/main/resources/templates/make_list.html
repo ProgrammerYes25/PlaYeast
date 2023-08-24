@@ -9,7 +9,7 @@
 <body>
     <h2 th:text="'PlaYeast'"></h2>
     <hr>
-    <h4 th:text="'음악검색하기'"></h4>
+    <h4 th:text="'리스트만들기'"></h4>
     <form method="post">
         앨 범 제 목 <input type="text" name="music_album"><br>
         아 티 스 트 <input type="text" name="music_artist"><br>
@@ -45,7 +45,7 @@
         <input type="radio" name="mood_id" class="radio_btn" value="M008"/>화려한
         <input type="radio" name="mood_id" class="radio_btn" value="M009"/>아련한
         <br>
-        <button type="submit" formaction="/play">플레이리스트 생성</button>
+        <button type="submit" formaction="/playList">플레이리스트 생성</button>
         <button type="submit"  formaction="/">나가기</button>
     </form>
 </body>

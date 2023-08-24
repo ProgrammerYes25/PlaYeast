@@ -1,6 +1,7 @@
 package kr.hs.study.PlaYeast.Service;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.PlayListDTO;
 import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 
@@ -15,4 +16,5 @@ public interface PlaYeastService {
     public List<RollupDTO> rollupNameSelect(SearchDTO dto);
     public void musicDelete(int id);
     public MusicDTO musicGet(int id);
+    public List<MusicDTO> makeList(PlayListDTO dto);
 }

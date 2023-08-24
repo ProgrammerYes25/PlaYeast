@@ -1,6 +1,7 @@
 package kr.hs.study.PlaYeast.Mappers;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
+import kr.hs.study.PlaYeast.DTO.PlayListDTO;
 import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,5 @@ public interface PlaYeastMapper {
     public List<RollupDTO> rollupNameSelect(SearchDTO dto);
     public void musicDelete(int id);
     public MusicDTO musicGet(int id);
+    public List<MusicDTO> makeList(PlayListDTO dto);
 }
