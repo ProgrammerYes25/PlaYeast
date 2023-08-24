@@ -14,4 +14,6 @@ public interface PlaYeastMapper {
     public List<MusicDTO> allSelect();
     public List<MusicDTO> nameSelect(SearchDTO dto);
     public List<RollupDTO> rollupSelect();
+    public void muiscDelete(int id);
+    public MusicDTO muiscGet(int id);
 }

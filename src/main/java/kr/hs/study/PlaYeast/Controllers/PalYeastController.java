@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -23,11 +24,11 @@ public class PalYeastController {
         return "index";
     }
 
-    @GetMapping("/search")
+    @GetMapping("/muiscList")
     public String getSearch(Model model){
         List<MusicDTO> list = plaYeastService.allSelect();
-        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
-        System.out.println(rollupDTOList);
+//        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
+//        System.out.println(rollupDTOList);
         model.addAttribute("muiscList", list);
         return "search";
     }
@@ -35,8 +36,8 @@ public class PalYeastController {
     @PostMapping("/search")
     public String postSearch(SearchDTO dto, Model model){
         List<MusicDTO> muiscList = plaYeastService.nameSelect(dto);
-        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
-        System.out.println(rollupDTOList);
+//        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
+//        System.out.println(rollupDTOList);
         model.addAttribute("muiscList", muiscList);
 
         return "search";
@@ -50,11 +51,24 @@ public class PalYeastController {
     public String postAdd(MusicDTO dto){
         System.out.println(dto);
         plaYeastService.muiscInsert(dto);
-        return "redirect:/search";
+        return "redirect:/muiscList";
     }
 
     @GetMapping("/makeList")
     public String getMakeList(){
         return "make_list";
+    }
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id") int id, Model model){
+        System.out.println("id :"+id);
+        MusicDTO muiscGet = plaYeastService.muiscGet(id);
+        model.addAttribute("musicGet", muiscGet);
+        return "update";
+    }
+    @GetMapping("/delete/{id}")
+    public String delect(@PathVariable("id") int id){
+        System.out.println("id :"+id);
+        plaYeastService.muiscDelete(id);
+        return "redirect:/muiscList";
     }
 }

@@ -11,7 +11,7 @@
             <hr>
         <h4 th:text="'음악검색하기'"></h4>
         <div class="btnDiv">
-            <a th:href="@{/search}" class="btn">음악보러가기</a>
+            <a th:href="@{/}" class="btn">돌아가기</a>
             <a th:href="@{/add}" class="btn">음악추가가기</a>
             <a th:href="@{/}" class="btn">음악들으러가기</a>
             <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
@@ -23,7 +23,7 @@
         </form>
         <table border>
             <tr>
-                <td>조회 내용</td>
+                조회 내용
             </tr>
             <tr>
                 <td>트랙번호</td>
@@ -56,6 +56,8 @@
                 <td>
                     <span th:text="${music.weather_name}"/>
                 </td>
+                <td><a th:href="@{'/update/'+ ${music.music_id}}">수정</a>
+                    / <a th:href="@{'/delete/'+${music.music_id}}">삭제</a></td>
             </tr>
         </table>
     </div>

@@ -9,25 +9,39 @@
         VALUES(NULL, #{music_name}, #{music_artist}, #{music_album}, #{music_time}, #{music_track}, #{genre_id}, #{mood_id}, #{weather_id})
     </insert>
     <select id="allSelect" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
-        SELECT * FROM music_table ORDER BY music_artist
+        SELECT music.music_id, music.music_track, music.music_name, music.music_artist, music.music_album, genre.genre_name, mood.mood_name, weather.weather_name
+        FROM music_table music NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
+        ORDER BY music.music_artist, music.music_album, music.music_track
     </select>
     <select id="nameSelect" parameterType="kr.hs.study.PlaYeast.DTO.SearchDTO" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
-        SELECT music_track, music_name, music_artist, music_album, genre_name, mood_name, weather_name
-        FROM (SELECT  music.music_track,  music.music_name, REGEXP_REPLACE(LOWER( music.music_name), '\s', ''),
+        SELECT music_id, music_track, music_name, music_artist, music_album, genre_name, mood_name, weather_name
+        FROM (SELECT music.music_id, music.music_track,  music.music_name, REGEXP_REPLACE(LOWER( music.music_name), '\s', ''),
         music.music_artist, REGEXP_REPLACE(LOWER( music.music_artist), '\s', ''),
         music.music_album, REGEXP_REPLACE(LOWER( music.music_album), '\s', ''), genre.genre_name, mood.mood_name, weather.weather_name
         FROM music_table  music  NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
         WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
+        ORDER BY music_artist, music_album, music_track
     </select>
+    <delete id="muiscDelete" parameterType="int">
+        DELETE FROM music_table WHERE music_id=#{id}
 
+    </delete>
+
+    <select id="muiscGet" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+        SELECT music.music_id, music.music_track, music.music_name, music.music_artist, music.music_album, genre.genre_name, mood.mood_name, weather.weather_name
+        FROM music_table music NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
+        WHERE music_id=#{id}
+    </select>
 <!--    <resultMap id="musicResultMap" type="com.example.dto.RollupDTO">-->
 <!--        <id property="musicArtist" column="music_artist" />-->
 <!--        <result property="count" column="count(*)" />-->
 <!--        <result property="sumMusicTime" column="sum(music_time)" />-->
 <!--    </resultMap>-->
-    <select id="rollupSelect" parameterMap="com.example.dto.RollupDTO">
-        SELECT music_artist, count(*) count, sum(music_time) sumMusicTime
-        FROM music_table GROUP BY ROLLUP(music_artist)
-        ORDER BY music_artist
-    </select>
+<!--    <select id="rollupSelect" parameterMap="com.example.dto.RollupDTO">-->
+<!--        SELECT music_artist, count(*) count, sum(music_time) sumMusicTime-->
+<!--        FROM music_table GROUP BY ROLLUP(music_artist)-->
+<!--        ORDER BY music_artist-->
+<!--    </select>-->
+
+
 </mapper>

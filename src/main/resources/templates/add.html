@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>PlaYeast-Abb</title>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css?after}">-->
 </head>
 <body>
     <h2 th:text="'PlaYeast'"></h2>
     <hr>
     <h4 th:text="'음악추가하기'"></h4>
+    <div class="btnDiv">
+        <a th:href="@{/muiscList}" class="btn">음악보러가기</a>
+        <a th:href="@{/}" class="btn">돌아가기</a>
+        <a th:href="@{/}" class="btn">음악들으러가기</a>
+        <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
+    </div>
+
     <form method="post">
         제 목 <input type="text" name="music_name"><br>
         앨 범 제 목 <input type="text" name="music_album"><br>
