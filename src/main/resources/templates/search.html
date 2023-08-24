@@ -24,8 +24,8 @@
         <table border>
             <tr th:each="rollup:${rollupList}">
                 <td><span th:text="${rollup.musicArtist}"/></td>
-                <td><span th:text="${rollup.count}"/></td>
-                <td><span th:text="${rollup.sumMusicTime}"/></td>
+                <td><span th:text="${rollup.count}"/>곡</td>
+                <td>시간 - <span th:text="${rollup.time}"/></td>
             </tr>
             <tr>
                 조회 내용

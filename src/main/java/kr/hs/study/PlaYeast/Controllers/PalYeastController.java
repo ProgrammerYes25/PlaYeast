@@ -29,17 +29,32 @@ public class PalYeastController {
         List<MusicDTO> list = plaYeastService.allSelect();
         List<RollupDTO> rollupList = plaYeastService.rollupSelect();
         System.out.println(rollupList);
+        for(int i =0; i < rollupList.size(); i++){
+            RollupDTO rdto = rollupList.get(i);
+            int t = rdto.getSumMusicTime();
+            rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
+        }
         model.addAttribute("rollupList", rollupList);
         model.addAttribute("muiscList", list);
         System.out.println(model);
         return "search";
     }
+    @GetMapping("/search")
+    public  String getSearch(){
+        return "redirect:/muiscList";
+    }
 
     @PostMapping("/search")
     public String postSearch(SearchDTO dto, Model model){
         List<MusicDTO> muiscList = plaYeastService.nameSelect(dto);
-//        List<RollupDTO> rollupDTOList = plaYeastService.rollupSelect();
-//        System.out.println(rollupDTOList);
+        List<RollupDTO> rollupList = plaYeastService.rollupNameSelect(dto);
+        System.out.println(rollupList);
+        for(int i =0; i < rollupList.size(); i++){
+           RollupDTO rdto = rollupList.get(i);
+           int t = rdto.getSumMusicTime();
+           rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
+        }
+        model.addAttribute("rollupList", rollupList);
         model.addAttribute("muiscList", muiscList);
 
         return "search";

@@ -35,6 +35,11 @@ public class PlaYeastServiceImpl implements PlaYeastService{
     }
 
     @Override
+    public List<RollupDTO> rollupNameSelect(SearchDTO dto) {
+        return plaYeastMapper.rollupNameSelect(dto);
+    }
+
+    @Override
     public void muiscDelete(int id) {
         System.out.println("id :"+id);
         plaYeastMapper.muiscDelete(id);
