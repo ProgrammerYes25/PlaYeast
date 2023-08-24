@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&display=swap');
 
-html, body{
-    width: 99%;
-    height: 99%;
-    background: linear-gradient(180deg, #A6BDCF 0%, #CDE3F1 100%);
+html{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,  #CDE3F1 0%,  #CDE3F1 100%);
 }
 a{
     text-decoration: none;

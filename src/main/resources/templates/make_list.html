@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>PlaYeast-MakeList</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/all.css?after}"></link>
+
 </head>
 <body>
     <h2 th:text="'PlaYeast'"></h2>
@@ -43,7 +45,7 @@
         <input type="radio" name="mood_id" class="radio_btn" value="M008"/>화려한
         <input type="radio" name="mood_id" class="radio_btn" value="M009"/>아련한
         <br>
-        <button type="submit" formaction="/add_done">플레이리스트 생성</button>
+        <button type="submit" formaction="/play">플레이리스트 생성</button>
         <button type="submit"  formaction="/">나가기</button>
     </form>
 </body>

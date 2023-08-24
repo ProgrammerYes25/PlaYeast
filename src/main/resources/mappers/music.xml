@@ -61,4 +61,15 @@
             WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
         ORDER BY music_artist
     </select>
+
+    <select id="playListSelect" parameterType="kr.hs.study.PlaYeast.DTO.PlayListDTO" resultMap="musicResultMap" >
+        SELECT count(*) count, sum(music_time) sumMusicTime
+        FROM (SELECT music.music_id, music.music_track,  music.music_name, REGEXP_REPLACE(LOWER( music.music_name), '\s', ''),
+        music.music_artist, REGEXP_REPLACE(LOWER( music.music_artist), '\s', ''),
+        music.music_album, REGEXP_REPLACE(LOWER( music.music_album), '\s', ''),
+        genre.genre_name, mood.mood_name, weather.weather_name, music.music_time
+        FROM music_table  music  NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
+        WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
+        ORDER BY music_artist
+    </select>
 </mapper>

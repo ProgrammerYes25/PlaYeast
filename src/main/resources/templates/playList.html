@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PlaYeast-Search</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/search.css?after}"></link>
+</head>
+<body>
+    <div class="centerDiv">
+        <h1 th:text="'PlaYeast'"></h1>
+            <hr>
+        <h4 th:text="'음악검색하기'"></h4>
+        <div class="btnDiv">
+            <a th:href="@{/}" class="btn">돌아가기</a>
+            <a th:href="@{/add}" class="btn">음악추가가기</a>
+            <a th:href="@{/}" class="btn">음악들으러가기</a>
+            <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
+        </div>
+
+        <table border>
+            <tr th:each="rollup:${rollupList}">
+                <td><span th:text="${rollup.musicArtist}"/></td>
+                <td><span th:text="${rollup.count}"/>곡</td>
+                <td>시간 - <span th:text="${rollup.time}"/></td>
+            </tr>
+            <tr>
+                조회 내용
+            </tr>
+            <tr>
+                <td>트랙번호</td>
+                <td>제목</td>
+                <td>아티스트</td>
+                <td>앨범</td>
+                <td>장르</td>
+                <td>분위기</td>
+                <td>날씨</td>
+            </tr>
+            <tr th:each="music:${musicList}">
+                <td>
+                    <span th:text="${music.music_track}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_artist}"/>
+                </td>
+                <td>
+                    <span th:text="${music.music_album}"/>
+                </td>
+                <td>
+                    <span th:text="${music.genre_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.mood_name}"/>
+                </td>
+                <td>
+                    <span th:text="${music.weather_name}"/>
+                </td>
+                <td><a th:href="@{'/play/'+ ${music.music_id}}">재생</a>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
