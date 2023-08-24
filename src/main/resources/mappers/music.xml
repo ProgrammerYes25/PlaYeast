@@ -11,10 +11,17 @@
         <result property="sumMusicTime" column="sumMusicTime" />
     </resultMap>
 
-    <insert id="muiscInsert" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+    <insert id="musicInsert" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
         INSERT INTO music_table(music_id, music_name, music_artist, music_album, music_time, music_track, genre_id, mood_id, weather_id)
         VALUES(NULL, #{music_name}, #{music_artist}, #{music_album}, #{music_time}, #{music_track}, #{genre_id}, #{mood_id}, #{weather_id})
     </insert>
+
+    <update id="musicUpdate" parameterType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+        UPDATE music_table SET music_name=#{music_name}, music_artist = #{music_artist},
+                        music_album = #{music_album}, music_time= #{music_time}, music_track=#{music_track},
+                        genre_id = #{genre_id}, mood_id = #{mood_id}, weather_id = #{weather_id} WHERE music_id = #{music_id}
+    </update>
+
     <select id="allSelect" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
         SELECT music.music_id, music.music_track, music.music_name, music.music_artist, music.music_album, genre.genre_name, mood.mood_name, weather.weather_name
         FROM music_table music NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood

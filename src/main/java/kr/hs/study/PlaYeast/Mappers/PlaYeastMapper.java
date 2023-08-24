@@ -10,7 +10,8 @@ import java.util.List;
 @Mapper
 public interface PlaYeastMapper {
 
-    public void muiscInsert(MusicDTO dto);
+    public void musicInsert(MusicDTO dto);
+    public void musicUpdate(MusicDTO dto);
     public List<MusicDTO> allSelect();
     public List<MusicDTO> nameSelect(SearchDTO dto);
     public List<RollupDTO> rollupSelect();

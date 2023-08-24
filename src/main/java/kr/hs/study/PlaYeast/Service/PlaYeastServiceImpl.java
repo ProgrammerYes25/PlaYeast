@@ -14,9 +14,14 @@ public class PlaYeastServiceImpl implements PlaYeastService{
     @Autowired
     private PlaYeastMapper plaYeastMapper;
     @Override
-    public void muiscInsert(MusicDTO dto) {
+    public void musicInsert(MusicDTO dto) {
         System.out.println(dto);
-        plaYeastMapper.muiscInsert(dto);
+        plaYeastMapper.musicInsert(dto);
+    }
+
+    @Override
+    public void musicUpdate(MusicDTO dto) {
+        plaYeastMapper.musicUpdate(dto);
     }
 
     @Override

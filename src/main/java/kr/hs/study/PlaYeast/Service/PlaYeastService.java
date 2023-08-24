@@ -7,7 +7,8 @@ import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import java.util.List;
 
 public interface PlaYeastService {
-    public void muiscInsert(MusicDTO dto);
+    public void musicInsert(MusicDTO dto);
+    public void musicUpdate(MusicDTO dto);
     public List<MusicDTO> allSelect();
     public List<MusicDTO> nameSelect(SearchDTO dto);
     public List<RollupDTO> rollupSelect();

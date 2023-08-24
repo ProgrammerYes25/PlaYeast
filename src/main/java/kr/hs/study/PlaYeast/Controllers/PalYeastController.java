@@ -1,7 +1,6 @@
 package kr.hs.study.PlaYeast.Controllers;
 
 import kr.hs.study.PlaYeast.DTO.MusicDTO;
-import kr.hs.study.PlaYeast.DTO.PlayListDTO;
 import kr.hs.study.PlaYeast.DTO.RollupDTO;
 import kr.hs.study.PlaYeast.DTO.SearchDTO;
 import kr.hs.study.PlaYeast.Service.PlaYeastService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Scanner;
 
 @Controller
 public class PalYeastController {
@@ -24,7 +22,7 @@ public class PalYeastController {
         return "index";
     }
 
-    @GetMapping("/muiscList")
+    @GetMapping("/musicList")
     public String getSearch(Model model){
         List<MusicDTO> list = plaYeastService.allSelect();
         List<RollupDTO> rollupList = plaYeastService.rollupSelect();
@@ -35,18 +33,18 @@ public class PalYeastController {
             rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
         }
         model.addAttribute("rollupList", rollupList);
-        model.addAttribute("muiscList", list);
+        model.addAttribute("musicList", list);
         System.out.println(model);
         return "search";
     }
     @GetMapping("/search")
     public  String getSearch(){
-        return "redirect:/muiscList";
+        return "redirect:/musicList";
     }
 
     @PostMapping("/search")
     public String postSearch(SearchDTO dto, Model model){
-        List<MusicDTO> muiscList = plaYeastService.nameSelect(dto);
+        List<MusicDTO> musicList = plaYeastService.nameSelect(dto);
         List<RollupDTO> rollupList = plaYeastService.rollupNameSelect(dto);
         System.out.println(rollupList);
         for(int i =0; i < rollupList.size(); i++){
@@ -55,7 +53,7 @@ public class PalYeastController {
            rdto.setTime((t/60)/60+":"+(t/60)%60+":"+t%60);
         }
         model.addAttribute("rollupList", rollupList);
-        model.addAttribute("muiscList", muiscList);
+        model.addAttribute("musicList", musicList);
 
         return "search";
     }
@@ -67,8 +65,8 @@ public class PalYeastController {
     @PostMapping("/add_done")
     public String postAdd(MusicDTO dto){
         System.out.println(dto);
-        plaYeastService.muiscInsert(dto);
-        return "redirect:/muiscList";
+        plaYeastService.musicInsert(dto);
+        return "redirect:/musicList";
     }
 
     @GetMapping("/makeList")
@@ -83,10 +81,17 @@ public class PalYeastController {
         model.addAttribute("musicGet", musicGet);
         return "update";
     }
+    @PostMapping("/update")
+    public String postUpdate(MusicDTO dto){
+        System.out.println(dto);
+        plaYeastService.musicUpdate(dto);
+        return "redirect:/musicList";
+    }
+
     @GetMapping("/delete/{id}")
     public String delect(@PathVariable("id") int id){
         System.out.println("id :"+id);
         plaYeastService.musicDelete(id);
-        return "redirect:/muiscList";
+        return "redirect:/musicList";
     }
 }

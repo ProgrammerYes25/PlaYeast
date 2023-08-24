@@ -9,13 +9,14 @@
     <hr>
     <h4 th:text="'음악정보수정하기'"></h4>
     <div class="btnDiv">
-        <a th:href="@{/muiscList}" class="btn">음악보러가기</a>
+        <a th:href="@{/musicList}" class="btn">음악보러가기</a>
         <a th:href="@{/}" class="btn">돌아가가기</a>
         <a th:href="@{/}" class="btn">음악들으러가기</a>
         <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
     </div>
 
     <form method="post"  th:object="${musicGet}">
+        아이디 <input type="text" name="music_name" th:field="*{music_id}" readonly><br>
         제 목 <input type="text" name="music_name" th:field="*{music_name}"><br>
         앨 범 제 목 <input type="text" name="music_album" th:field="*{music_album}"><br>
         트 랙 번 호 <input type="text" name ="music_track" th:field="*{music_track}"><br>
@@ -23,51 +24,65 @@
         음 악 길 이 <input type="text" name="music_time" th:field="*{music_time}"><br>
         키 워 드<br>
         &nbsp; 장 르&nbsp; &nbsp;
-        <input type="radio" name="genre_id" class="radio_btn" value="G001">댄스
-        <input type="radio" name="genre_id" class="radio_btn" value="G002">발라드
-        <input type="radio" name="genre_id" class="radio_btn" value="G003">힙합
-        <input type="radio" name="genre_id" class="radio_btn" value="G004">록
-        <input type="radio" name="genre_id" class="radio_btn" value="G005">팝
-        <input type="radio" name="genre_id" class="radio_btn" value="G006">포크/컨트리
-        <input type="radio" name="genre_id" class="radio_btn" value="G007">재즈
-        <input type="radio" name="genre_id" class="radio_btn" value="G008">일렉트릭
+        <input type="radio" name="genre_id" class="radio_btn" value="G001"
+               th:checked="${musicGet.genre_id == 'G001'}">댄스
+        <input type="radio" name="genre_id" class="radio_btn" value="G002"
+               th:checked="${musicGet.genre_id == 'G002'}">발라드
+        <input type="radio" name="genre_id" class="radio_btn" value="G003"
+               th:checked="${musicGet.genre_id == 'G003'}">힙합
+        <input type="radio" name="genre_id" class="radio_btn" value="G004"
+               th:checked="${musicGet.genre_id == 'G004'}">록
+        <input type="radio" name="genre_id" class="radio_btn" value="G005"
+               th:checked="${musicGet.genre_id == 'G005'}">팝
+        <input type="radio" name="genre_id" class="radio_btn" value="G006"
+               th:checked="${musicGet.genre_id == 'G006'}">포크/컨트리
+        <input type="radio" name="genre_id" class="radio_btn" value="G007"
+               th:checked="${musicGet.genre_id == 'G007'}">재즈
+        <input type="radio" name="genre_id" class="radio_btn" value="G008"
+               th:checked="${musicGet.genre_id == 'G008'}">일렉트릭
         <br>
         &nbsp; 날 씨&nbsp; &nbsp;
-        <input type="radio" name="weather_id" class="radio_btn" value="W001">맑은
-        <input type="radio" name="weather_id" class="radio_btn" value="W002">흐린
-        <input type="radio" name="weather_id" class="radio_btn" value="W003"/>비
-        <input type="radio" name="weather_id" class="radio_btn" value="w004"/>눈
-        <input type="radio" name="weather_id" class="radio_btn" value="W005"/>봄
-        <input type="radio" name="weather_id" class="radio_btn" value="W006"/>여름
-        <input type="radio" name="weather_id" class="radio_btn" value="W007"/>가을
-        <input type="radio" name="weather_id" class="radio_btn" value="W008"/>겨울
+        <input type="radio" name="weather_id" class="radio_btn" value="W001"
+               th:checked="${musicGet.weather_id == 'W001'}">맑은
+        <input type="radio" name="weather_id" class="radio_btn" value="W002"
+               th:checked="${musicGet.weather_id == 'W002'}">흐린
+        <input type="radio" name="weather_id" class="radio_btn" value="W003"
+               th:checked="${musicGet.weather_id == 'W003'}"/>비
+        <input type="radio" name="weather_id" class="radio_btn" value="w004"
+               th:checked="${musicGet.weather_id == 'W004'}"/>눈
+        <input type="radio" name="weather_id" class="radio_btn" value="W005"
+               th:checked="${musicGet.weather_id == 'W005'}"/>봄
+        <input type="radio" name="weather_id" class="radio_btn" value="W006"
+               th:checked="${musicGet.weather_id == 'W006'}"/>여름
+        <input type="radio" name="weather_id" class="radio_btn" value="W007"
+               th:checked="${musicGet.weather_id == 'W007'}"/>가을
+        <input type="radio" name="weather_id" class="radio_btn" value="W008"
+               th:checked="${musicGet.weather_id == 'W008'}"/>겨울
         <br>
         분 위 기&nbsp;
-        <input type="radio" name="mood_id" class="radio_btn" value="M001"/>신나는
-        <input type="radio" name="mood_id" class="radio_btn" value="M002"/>힐링
-        <input type="radio" name="mood_id" class="radio_btn" value="M003"/>청량한
-        <input type="radio" name="mood_id" class="radio_btn" value="M004"/>따뜻한
-        <input type="radio" name="mood_id" class="radio_btn" value="M005"/>위로가되는
-        <input type="radio" name="mood_id" class="radio_btn" value="M006"/>잔잔한
-        <input type="radio" name="mood_id" class="radio_btn" value="M007"/>몽환적인
-        <input type="radio" name="mood_id" class="radio_btn" value="M008"/>화려한
-        <input type="radio" name="mood_id" class="radio_btn" value="M009"/>아련한
+        <input type="radio" name="mood_id" class="radio_btn" value="M001"
+               th:checked="${musicGet.mood_id == 'M001'}"/>신나는
+        <input type="radio" name="mood_id" class="radio_btn" value="M002"
+               th:checked="${musicGet.mood_id == 'M002'}"/>힐링
+        <input type="radio" name="mood_id" class="radio_btn" value="M003"
+               th:checked="${musicGet.mood_id == 'M003'}"/>청량한
+        <input type="radio" name="mood_id" class="radio_btn" value="M004"
+               th:checked="${musicGet.mood_id == 'M004'}"/>따뜻한
+        <input type="radio" name="mood_id" class="radio_btn" value="M005"
+               th:checked="${musicGet.mood_id == 'M005'}"/>위로가되는
+        <input type="radio" name="mood_id" class="radio_btn" value="M006"
+               th:checked="${musicGet.mood_id == 'M006'}"/>잔잔한
+        <input type="radio" name="mood_id" class="radio_btn" value="M007"
+               th:checked="${musicGet.mood_id == 'M007'}"/>몽환적인
+        <input type="radio" name="mood_id" class="radio_btn" value="M008"
+               th:checked="${musicGet.mood_id == 'M008'}"/>화려한
+        <input type="radio" name="mood_id" class="radio_btn" value="M009"
+               th:checked="${musicGet.mood_id == 'M009'}"/>아련한
         <br>
-        <button type="submit" formaction="/add_done">생성</button>
+        <button type="submit" formaction="/update">수정</button>
         <button type="submit"  formaction="/">나가기</button>
     </form>
 
-<!--    <script th:inline="javascript">-->
-<!--    var muiscGet = [[${muiscGet}]];-->
-<!--    var radios = document.getElementsByName('fruit');-->
-<!--    function checkRadioButton() {-->
-<!--        for (var i = 0; i < radios.length; i++) {-->
-<!--            if (radios[i].checked) {-->
-<!--                radios[i].prop('checked', true);-->
-<!--                }-->
-<!--        }-->
-<!--    }-->
-<!--    </script>-->
 
 </body>
 </html>
