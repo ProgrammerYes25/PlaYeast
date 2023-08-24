@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleafs.org">
 <head>
     <meta charset="UTF-8">
     <title>PlaYeast-Updata</title>
@@ -15,12 +15,12 @@
         <a th:href="@{/makeList}" class="btn">리스트만들러가기</a>
     </div>
 
-    <form method="post">
-        제 목 <input type="text" name="music_name"><br>
-        앨 범 제 목 <input type="text" name="music_album"><br>
-        트 랙 번 호 <input type="text" name ="music_track"><br>
-        아 티 스 트 <input type="text" name="music_artist"><br>
-        음 악 길 이 <input type="text" name="music_time"><br>
+    <form method="post"  th:object="${musicGet}">
+        제 목 <input type="text" name="music_name" th:field="*{music_name}"><br>
+        앨 범 제 목 <input type="text" name="music_album" th:field="*{music_album}"><br>
+        트 랙 번 호 <input type="text" name ="music_track" th:field="*{music_track}"><br>
+        아 티 스 트 <input type="text" name="music_artist" th:field="*{music_artist}"><br>
+        음 악 길 이 <input type="text" name="music_time" th:field="*{music_time}"><br>
         키 워 드<br>
         &nbsp; 장 르&nbsp; &nbsp;
         <input type="radio" name="genre_id" class="radio_btn" value="G001">댄스
@@ -57,17 +57,17 @@
         <button type="submit"  formaction="/">나가기</button>
     </form>
 
-    <script th:inline="javascript">
-    var muiscGet = [[${muiscGet}]];
-    var radios = document.getElementsByName('fruit');
-    function checkRadioButton() {
-        for (var i = 0; i < radios.length; i++) {
-            if (radios[i].checked) {
-                radios[i].prop('checked', true);
-                }
-        }
-    }
-    </script>
+<!--    <script th:inline="javascript">-->
+<!--    var muiscGet = [[${muiscGet}]];-->
+<!--    var radios = document.getElementsByName('fruit');-->
+<!--    function checkRadioButton() {-->
+<!--        for (var i = 0; i < radios.length; i++) {-->
+<!--            if (radios[i].checked) {-->
+<!--                radios[i].prop('checked', true);-->
+<!--                }-->
+<!--        }-->
+<!--    }-->
+<!--    </script>-->
 
 </body>
 </html>

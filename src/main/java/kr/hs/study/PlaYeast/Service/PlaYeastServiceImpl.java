@@ -40,12 +40,12 @@ public class PlaYeastServiceImpl implements PlaYeastService{
     }
 
     @Override
-    public void muiscDelete(int id) {
+    public void musicDelete(int id) {
         System.out.println("id :"+id);
-        plaYeastMapper.muiscDelete(id);
+        plaYeastMapper.musicDelete(id);
     }
 
-    public MusicDTO muiscGet(int id){
-        return plaYeastMapper.muiscGet(id);
+    public MusicDTO musicGet(int id){
+        return plaYeastMapper.musicGet(id);
     }
 }

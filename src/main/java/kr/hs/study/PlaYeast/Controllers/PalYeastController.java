@@ -78,14 +78,15 @@ public class PalYeastController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable("id") int id, Model model){
         System.out.println("id :"+id);
-        MusicDTO muiscGet = plaYeastService.muiscGet(id);
-        model.addAttribute("musicGet", muiscGet);
+        MusicDTO musicGet = plaYeastService.musicGet(id);
+        System.out.println("musicGet :"+musicGet);
+        model.addAttribute("musicGet", musicGet);
         return "update";
     }
     @GetMapping("/delete/{id}")
     public String delect(@PathVariable("id") int id){
         System.out.println("id :"+id);
-        plaYeastService.muiscDelete(id);
+        plaYeastService.musicDelete(id);
         return "redirect:/muiscList";
     }
 }

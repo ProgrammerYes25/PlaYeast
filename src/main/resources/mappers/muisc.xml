@@ -29,13 +29,12 @@
         WHERE music_name LIKE '%'||#{name}||'%' OR music_artist LIKE '%'||#{name}||'%' OR music_album LIKE '%'||#{name}||'%')
         ORDER BY music_artist, music_album, music_track
     </select>
-    <delete id="muiscDelete" parameterType="int">
+    <delete id="musicDelete" parameterType="int">
         DELETE FROM music_table WHERE music_id=#{id}
     </delete>
 
-    <select id="muiscGet" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
-        SELECT music.music_id, music.music_track, music.music_name, music.music_artist, music.music_album, genre.genre_name, mood.mood_name, weather.weather_name
-        FROM music_table music NATURAL JOIN genre_table genre NATURAL JOIN weather_table weather NATURAL JOIN mood_table mood
+    <select id="musicGet" parameterType="int" resultType="kr.hs.study.PlaYeast.DTO.MusicDTO">
+        SELECT * FROM music_table
         WHERE music_id=#{id}
     </select>
 

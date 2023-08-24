@@ -12,6 +12,6 @@ public interface PlaYeastService {
     public List<MusicDTO> nameSelect(SearchDTO dto);
     public List<RollupDTO> rollupSelect();
     public List<RollupDTO> rollupNameSelect(SearchDTO dto);
-    public void muiscDelete(int id);
-    public MusicDTO muiscGet(int id);
+    public void musicDelete(int id);
+    public MusicDTO musicGet(int id);
 }
